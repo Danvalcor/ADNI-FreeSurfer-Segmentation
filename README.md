@@ -12,8 +12,8 @@ In this project, we use FreeSurfer to perform segmentations of structures of int
 These are used to quantify and characterize regions of interest and provide additional information about the pathological features of the MRI images.
 
 ## Contents
-- **FreeSurfer Segmentation Scripts**: This directory contains scripts and configuration files for performing automatic segmentations of structures of interest in MRI images using FreeSurfer.
-- **Pyradiomics Radiomic Analysis Scripts**: This directory contains scripts for performing radiomic analysis using Pyradiomics, including feature extraction and feature record generation.
+- [**FreeSurfer Segmentation Scripts**](https://github.com/Danvalcor/ADNI-FreeSurfer-Segmentation/tree/main/FreeSurfer%20-%20MRI%20Segmentation): This directory contains scripts and configuration files for performing automatic segmentations of structures of interest in MRI images using FreeSurfer.
+- [**Pyradiomics Radiomic Analysis Scripts**](https://github.com/Danvalcor/ADNI-FreeSurfer-Segmentation/tree/main/Segmentation%20Analysis): This directory contains scripts for performing radiomic analysis using Pyradiomics, including feature extraction and feature record generation.
 
 ## Usage
 
