@@ -1,15 +1,10 @@
 import os
-import cv2
-import warnings
-import radiomics 
 import subprocess
 import numpy as np
 import pandas as pd
 import nibabel as nib
 from openpyxl import Workbook
-from openpyxl.utils.dataframe import dataframe_to_rows
-import matplotlib.pyplot as plt
-from nilearn import plotting, image
+
 
 # Retrieves the freesurfer installation path and executes the setup file.
 freeSurfer = os.environ['FREESURFER_HOME']
@@ -26,19 +21,6 @@ subprocess.run([f"{freeSurfer}/SetUpFreeSurfer.sh"])
     asegPath1 = f'{mainPath}/mri/aparc+aseg.mgz'
     asegPath2 = f'{mainPath}/mri/aparc+aseg.mgz'
 """
-
-"""
-    First Comaprison. 
-    
-    
-    # Main path where all requiered files are encountered.
-    mainPath = os.path.join('/home/danvalcor/Downloads/ADNI/')
-
-    # Specific path for the volumes.
-    asegPath1 = 
-    asegPath2 = '
-"""
-
 
 # Main path where all requiered files are encountered.
 mainPath = os.path.join('/home/danvalcor/Downloads/ADNI')
@@ -157,31 +139,28 @@ for i, (asegPath1, asegPath2) in enumerate(zip(asegPaths1, asegPaths2)):
         print("No found difference in the segments: ")
         print(df[["StructName","NVoxels1","NVoxels2",'DiffVoxels']])
 
-    # Seleccionar las columnas que quieres guardar en el archivo Excel
-    columnas_a_guardar = ["Id","StructName", "NVoxels1", "NVoxels2", 'DiffVoxels']
+    # Selects desired columns to store on the worksheet.
+    colums = ["Id","StructName", "NVoxels1", "NVoxels2", 'DiffVoxels']
+    dfCols = df[colums]
 
-    # Escribir los encabezados del DataFrame en la primera fila de la hoja activa
-    if i == 0: # Solo en la primera iteración
-        encabezados = columnas_a_guardar
-        for col, encabezado in enumerate(encabezados, start=1):
-            ws.cell(row=1, column=col, value=encabezado)
+    # Obtaines the rows from the dataframe.
+    rows = dfCols.values.tolist()
 
-    # Obtener solo las columnas seleccionadas
-    df_seleccionado = df[columnas_a_guardar]
-
-    # Obtener las filas del DataFrame seleccionado
-    filas = df_seleccionado.values.tolist()
-
-    # Crear una nueva hoja en el libro de Excel para cada iteración
-    if i == 0: # Solo en la primera iteración
+    # Creates a new sheet for each subject.
+    if i == 0: # For the active sheet, assign the first subject Id.
         ws.title = subjectID
     else:
         ws = wb.create_sheet(title=subjectID)
 
-    # Escribir el DataFrame seleccionado en la hoja activa
-    for r_idx, fila in enumerate(filas, start=2): # Comienza desde la fila 2
-        for c_idx, valor in enumerate(fila, start=1): # Comienza desde la columna 1
+    # Write the DF headers
+    encabezados = colums
+    for col, encabezado in enumerate(encabezados, start=1):
+        ws.cell(row=1, column=col, value=encabezado)
+
+    # Write the desired information in the corresponding sheet.
+    for r_idx, fila in enumerate(rows, start=2): 
+        for c_idx, valor in enumerate(fila, start=1): 
             ws.cell(row=r_idx, column=c_idx, value=valor)
 
-# Guardar el libro de Excel
+# Saves the SpreadSheet.
 wb.save("comparison_data.xlsx")
