@@ -16,7 +16,9 @@ These are used to quantify and characterize regions of interest and provide addi
 - [**FreeSurfer - MRI Segmentation**](https://github.com/Danvalcor/ADNI-FreeSurfer-Segmentation/tree/main/FreeSurfer%20-%20MRI%20Segmentation): This directory contains scripts and configuration files for performing automatic segmentations of structures of interest in MRI images using FreeSurfer. As well as a step to step guide for generating a manual segmentation.
 - [**Volume Visualization**](https://github.com/Danvalcor/ADNI-FreeSurfer-Segmentation/tree/main/FreeSurfer%20-%20MRI%20Segmentation): This directory contains scripts and configuration files for performing automatic segmentations of structures of interest in MRI images using FreeSurfer. As well as a step to step guide for generating a manual segmentation.
 - [**Pyradiomics Radiomic Analysis Scripts**](https://github.com/Danvalcor/ADNI-FreeSurfer-Segmentation/tree/main/Segmentation%20Analysis): This directory contains scripts for performing radiomic analysis using Pyradiomics, including feature extraction and feature record generation.
-- [**Interaiton.py**](https://github.com/Danvalcor/ADNI-FreeSurfer-Segmentation/blob/main/integration.py): A tkinter made app, that allows to integrate the contents of this respository. Allowing to visualize, segment and review segment data. 
+- [**Integration.py**](https://github.com/Danvalcor/ADNI-FreeSurfer-Segmentation/blob/main/integration.py): A tkinter made app, that allows to integrate the contents of this respository. Allowing to visualize, segment and review segment data.
+
+🚨 **IMPORTANT:** It's important to note that some files make use of the helperFuns.py file, make sure to include it in the same workspace.
 
 ## Usage
 To use this repository, follow the instructions provided in the documentation and execute the corresponding scripts in your working environment.
