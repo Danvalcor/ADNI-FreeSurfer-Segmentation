@@ -34,7 +34,7 @@ for p in parts:
 aseg1 = nib.load(asegPath1)     # Volume containing ADNI Segmentation.
 aseg2 = nib.load(asegPath2)     # Volume containing Freesurfer Segmentation. 
 
-dfCols = comparison(adni=aseg1, freesurfer=aseg2)
+dfCols = compareADNI(adni=aseg1, freesurfer=aseg2)
 
 # Obtaines the rows from the dataframe.
 rows = dfCols.values.tolist()
