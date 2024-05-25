@@ -46,5 +46,8 @@ The volumes can be visualized in 2D using the existing library of nilearn. While
 
 In order to view the volumes you can use a mesh with matplotlib. Or use better optimized libraries such as mayavi or vtk. In the example, we use vtk since it allows us to integrate it with tkinter.
 
+### Needed files <a class="anchor" id="needed-files"></a>
 
+To obten access to ADNI data collectios (MRI images), sign in is needed at https://adni.loni.usc.edu/data-samples/access-data/ 
+scroll down until "apply for ADNI data" button appears, click on it and read the terms and conditions, agree on them and click submit. There will be 4 steps, enter your email, hit continue button, second put the security code sent to the email you just wrote, third, enter your information and follow instructions for step four, once you completed this steps wait for ADNI email for access.
 
