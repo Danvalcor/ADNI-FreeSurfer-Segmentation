@@ -38,6 +38,8 @@ This repositorie makes use of the followinf libraries:
 * `numpy`
 * `pandas`
 * `nibabel`
+* `tkinter`
+* `sci`
 * `matplotlib` (with `pyplot` and `colors`)
 * `nilearn` (with `plotting` and `image`)
 * `vtk` (for 3D visualization)
@@ -56,6 +58,7 @@ cd build
 
 # Configurar la compilación
 cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 -DCMAKE_C_COMPILER=/usr/bin/gcc-9 -DBUILD_SHARED_LIBS=ON -DVTK_BUILD_TESTING=OFF -DVTK_PYTHON_VERSION=3 -DCMAKE_BUILD_TYPE=Release -DVTK_WRAP_PYTHON=ON -DVTK_USE_TK=ON -DVTK_MODULE_ENABLE_VTK_RenderingTk=YES ..
+# It's possible that you may need to install cmake, gcc-9, g++-9 as well as tcl-dev, tk-dev, libopengl-dev, libvtk9-dev and mesa-common-dev packages in order for it to work.
 
 # Compilar e instalar
 make -j$(nproc)
@@ -70,17 +73,21 @@ As well you must install FreeSurfer, to actually create the segmentations. In or
   - Size of installed image: 16GB
   - Typical size of a processed subject: 300MB
 * You can install it from the terminal using the tar file. (make sure to have `tcsh` installed)
+* You can manually check and verify available versions in the following [**page**](https://surfer.nmr.mgh.harvard.edu/fswiki/rel7downloads).
   
 ```bash
 cd ~
-# this is the 64 bit version
-wget ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.4.1/freesurfer-linux-ubuntu18_amd64-7.4.1.tar.gz
+# This is the 64 bit version for ubuntu 22.
+wget ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.4.1/freesurfer-linux-ubuntu22_amd64-7.4.1.tar.gz
 cd /usr/local/
 sudo tar -xzvf ~/freesurfer-*.tar.gz
 
 # Set up the global variables
-echo "FREESURFER_HOME=/usr/local/freesurfer" >> ~/.bashrc
-echo 'source $FREESURFER_HOME/SetUpFreeSurfer.sh' >> ~/.bashrc
+echo "export FREESURFER_HOME=/usr/local/freesurfer" >> ~/.bashrc
+source ~/.bashrc
+
+# Set up Freesurfer
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
 # Clean the build
 rm ~/freesurfer-*.tar.gz
