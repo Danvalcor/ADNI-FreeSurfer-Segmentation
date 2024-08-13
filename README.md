@@ -48,16 +48,30 @@ In the case of vtk, its highly recomended to build the library. Since `libvtkRen
 We recomend to use the following instructions
 
 ```bash
-# Clonar el repositorio de VTK
-git clone --branch v9.1.0 --recursive https://gitlab.kitware.com/vtk/vtk.git
+# Open the installation path of python or the active enviroment. (DCMAKE_INSTALL_PREFIX can also be used instead)
+# It's usefull to use the 'which' command in an enviroment to find the path
+cd ~/env/lib/python3.x/site-packages
+
+# Clone VTK repository
+git clone --branch v9.2.6 --recursive https://gitlab.kitware.com/vtk/vtk.git
 cd vtk
 
-# Crear el directorio de construcción
+# Create build path
 mkdir build
 cd build
 
-# Configurar la compilación
-cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 -DCMAKE_C_COMPILER=/usr/bin/gcc-9 -DBUILD_SHARED_LIBS=ON -DVTK_BUILD_TESTING=OFF -DVTK_PYTHON_VERSION=3 -DCMAKE_BUILD_TYPE=Release -DVTK_WRAP_PYTHON=ON -DVTK_USE_TK=ON -DVTK_MODULE_ENABLE_VTK_RenderingTk=YES ..
+# Configure compilation
+cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 \
+      -DCMAKE_C_COMPILER=/usr/bin/gcc-9 \
+      -DBUILD_SHARED_LIBS=ON \
+      -DVTK_BUILD_TESTING=OFF \
+      -DVTK_PYTHON_VERSION=3 \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DVTK_WRAP_PYTHON=ON \
+      -DVTK_USE_TK=ON \
+      -DVTK_MODULE_ENABLE_VTK_RenderingTk=YES \
+      ..
+
 # It's possible that you may need to install cmake, gcc-9, g++-9 as well as tcl-dev, tk-dev, libopengl-dev, libvtk9-dev and mesa-common-dev packages in order for it to work.
 
 # Compilar e instalar
