@@ -96,12 +96,12 @@ wget ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/7.4.1/freesurfer-linux
 cd /usr/local/
 sudo tar -xzvf ~/freesurfer-*.tar.gz
 
-# Set up the global variables
+# Set up the global variables for free surfer
 echo "export FREESURFER_HOME=/usr/local/freesurfer" >> ~/.bashrc
+echo "source $FREESURFER_HOME/SetUpFreeSurfer.sh" >> ~/.bashrc
 source ~/.bashrc
 
-# Set up Freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
+
 
 # Clean the build
 rm ~/freesurfer-*.tar.gz
