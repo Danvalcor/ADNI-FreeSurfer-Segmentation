@@ -97,8 +97,8 @@ cd /usr/local/
 sudo tar -xzvf ~/freesurfer-*.tar.gz
 
 # Set up the global variables for free surfer
-echo "export FREESURFER_HOME=/usr/local/freesurfer" >> ~/.bashrc
-echo "source $FREESURFER_HOME/SetUpFreeSurfer.sh" >> ~/.bashrc
+echo 'export FREESURFER_HOME="/usr/local/freesurfer"' >> ~/.bashrc
+echo 'source $FREESURFER_HOME/SetUpFreeSurfer.sh' >> ~/.bashrc
 source ~/.bashrc
 
 
